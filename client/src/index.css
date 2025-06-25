@@ -4,9 +4,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url("./assets/images.png") no-repeat;
-  background-position: 80px 200px;
-  /* background-color: lightcoral; */
+
 }
 *{
   margin: 0;

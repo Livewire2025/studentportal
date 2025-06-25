@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function Frontpage() {
   return (
     <>
-      <img src="src/assets/log.png" alt="" width="90px" />
+      <img src="src/assets/log1.png" alt="" width="90px" />
       <section
         class="hero"
         aria-label="Welcome to LiveWire student exam portal front page hero section"
