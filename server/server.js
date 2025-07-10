@@ -13,13 +13,13 @@ app.use("/api/student", studentRoutes);
 app.use("/api",certificateRoutes);
 
 // Connect to MongoDB (replace db name as needed)
-mongoose.connect("mongodb://localhost:27017/studentTestPortal", {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB error", err));
 
 // Start the server
-app.listen(5000, () => {
+app.listen(process.env.PORT, () => {
   console.log("Server running on port 5000");
 });

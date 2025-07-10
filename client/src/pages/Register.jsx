@@ -21,7 +21,7 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/student/register", formData);
+    await axios.post(`${import.meta.env.VITE_BACKEND}/api/student/register`||"http://localhost:5000/api/student/register", formData);
       localStorage.setItem("email", formData.email);
       localStorage.setItem("name", formData.name);
       navigate("/test");
