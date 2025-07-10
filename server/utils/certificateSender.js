@@ -10,7 +10,7 @@ const generateCertificate = (name, score) => {
   const doc = new PDFDocument({ size: "A4", layout: "landscape" });
 
   const fileName = `certificate_${name.replace(/\s/g, "_")}.pdf`;
-  const filePath = path.join(__dirname, "..", "temp", fileName);
+  const filePath = path.join(__dirname, "..", "certificates", fileName);
 
   // Select background based on score
   const bgImage =
