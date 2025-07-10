@@ -165,13 +165,13 @@ export default function TestPage() {
       const percentage = Math.round(((score + (selected === questions[currentQ].answer ? 1 : 0)) / questions.length) * 100);
 
       try {
-        await fetch("http://localhost:5000/api/student/submit", {
+        await fetch(`${import.meta.env.VITE_BACKEND}/api/student/submit`||"http://localhost:5000/api/student/submit", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, score: percentage }),
         });
 
-        const certRes = await fetch("http://localhost:5000/api/send-certificate", {
+        const certRes = await fetch(`${import.meta.env.VITE_BACKEND}/api/send-certificate`||"http://localhost:5000/api/send-certificate", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, name, score: percentage }),

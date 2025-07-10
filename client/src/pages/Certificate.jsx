@@ -11,7 +11,7 @@ export default function Certificate() {
   const handleSend = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/send-certificate", {
+      const res = await axios.post(`${import.meta.env.VITE_BACKEND}/api/send-certificate`||"http://localhost:5000/api/send-certificate", {
         email,
         name,
         score,
