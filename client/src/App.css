@@ -33,6 +33,11 @@ body {
   margin-left: 280px;
   margin-top: -180px;
 }
+@media screen and (max-width:750px){
+  .l3img{
+    margin-left: 80px;
+  }
+}
 .l3{
   font-size: 15px;
 }
