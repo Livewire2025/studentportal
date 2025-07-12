@@ -40,7 +40,10 @@ export default function Register() {
   ];
 
   return (
+    <>
  <form onSubmit={handleSubmit} className="register-form">
+      <img src="log1.png" alt="" width="90px" />
+       <h1 className="l3">Livewire Learner's License</h1>
       <h2>Online Assesment Registration</h2>
       <p>Create your account to access exams and results</p>
     <div className="form">
@@ -93,6 +96,7 @@ export default function Register() {
 
       <button type="submit">Start Assesment</button>
     </form>
+    </>
   );
 }
 

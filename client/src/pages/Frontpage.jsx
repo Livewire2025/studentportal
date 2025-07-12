@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 export default function Frontpage() {
   return (
     <>
-      <img src="src/assets/log1.png" alt="" width="90px" />
       <section
         class="hero"
         aria-label="Welcome to LiveWire student exam portal front page hero section"
       >
         <div class="hero-content">
+           <img src="log1.png" alt="" width="90px" />
           <h1 class="hero-title">Livewire Learner's License</h1>
           <p class="hero-subtitle">
             Get started with your exams in just few steps.Our student portal is

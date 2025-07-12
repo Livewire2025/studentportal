@@ -191,7 +191,10 @@ export default function TestPage() {
   if (questions.length === 0) return <p>Loading questions...</p>;
 
   return (
+    <>
     <div className="test-container">
+     <img src="log1.png" alt="" width="90px" />
+         <h1 className="l3">Livewire Learner's License</h1>
       <div className="test-header">
         <h3>
           Question {currentQ + 1} / {questions.length}
@@ -219,5 +222,6 @@ export default function TestPage() {
         </button>
       )}
     </div>
+    </>
   );
 }
