@@ -30,11 +30,11 @@ body {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 .l3img{
-  margin-left: 200px;
+  margin-left: 280px;
+  margin-top: -180px;
 }
 .l3{
   font-size: 15px;
-  margin-left: 150px;
 }
 h2 {
   font-weight: 600;

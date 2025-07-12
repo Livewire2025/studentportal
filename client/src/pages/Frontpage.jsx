@@ -27,6 +27,7 @@ export default function Frontpage() {
           </Link>
         </div>
         <div class="hero-image-container">
+          <img src="Livewire Logo.png" alt=""  width="450px"/><br/>
           <img
             src="examportalim.png"
             alt="Modern and dynamic illustration showing students interacting with digital exam portal - laptops, study material, check marks emphasizing successful exam completion in vibrant colors with clean style"

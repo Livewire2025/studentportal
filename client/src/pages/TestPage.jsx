@@ -195,6 +195,7 @@ export default function TestPage() {
     <div className="test-container">
      <img src="log1.png" alt="" width="90px" />
          <h1 className="l3">Livewire Learner's License</h1>
+         <img className="l3img" src="Livewire Logo.png" alt=""  width="250px"/>
       <div className="test-header">
         <h3>
           Question {currentQ + 1} / {questions.length}
