@@ -9,9 +9,9 @@ export default function Register() {
     phone: "",
     college: "",
     clgCourse: "",
-    course: "",
-    careerStatus:""
+    careerStatus: ""
   });
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -21,7 +21,10 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-    await axios.post(`${import.meta.env.VITE_BACKEND}/api/student/register`||"http://localhost:5000/api/student/register", formData);
+      await axios.post(
+        `${import.meta.env.VITE_BACKEND}/api/student/register` || "http://localhost:5000/api/student/register",
+        formData
+      );
       localStorage.setItem("email", formData.email);
       localStorage.setItem("name", formData.name);
       navigate("/test");
@@ -30,75 +33,71 @@ export default function Register() {
     }
   };
 
-
   const clgCourseOptions = ["BSc", "BCA", "B.E", "B.Tech", "MSc", "MCA"];
   const careerStatusOptions = [
     "Student",
     "Entrepreneur",
     "Job Seeker",
-    "Working Professional",
+    "Working Professional"
   ];
 
   return (
-    <>
- <form onSubmit={handleSubmit} className="register-form">
-      <img src="log1.png" alt="" width="90px" />
-       <h1 className="l3">Livewire Learner's License</h1>
-  <img className="l3img" src="Livewire Logo.png" alt=""  width="250px"/>
-      <h2>Online Assesment Registration</h2>
+    <form onSubmit={handleSubmit} className="register-form">
+       <img src="log1.png" alt="" width="90px" />
+         <h1 className="l3">Livewire Learner's License</h1>
+         <img className="l3img" src="Livewire Logo.png" alt=""  width="250px"/>
+      <h2>Online Assessment Registration</h2>
       <p>Create your account to access exams and results</p>
-    <div className="form">
-      {["name", "email", "phone", "college"].map((key) => (
-        <div key={key}>
-          <label htmlFor={key}>{key.charAt(0).toUpperCase() + key.slice(1)}</label>
-          <input
-            type={key === "email" ? "email" : key === "phone" ? "tel" : "text"}
-            id={key}
-            placeholder={key}
-            name={key}
-            value={formData[key]}
-            onChange={handleChange}
-            required
-          />
+
+      <div className="form">
+        {["name", "email", "phone", "college"].map((key) => (
+          <div key={key}>
+            <label htmlFor={key}>{key.charAt(0).toUpperCase() + key.slice(1)}</label>
+            <input
+              type={key === "email" ? "email" : key === "phone" ? "tel" : "text"}
+              id={key}
+              placeholder={key}
+              name={key}
+              value={formData[key]}
+              onChange={handleChange}
+              required
+            />
+          </div>
+        ))}
+
+        <div>
+          <label htmlFor="clgCourse">Qualification</label>
+          <select name="clgCourse" value={formData.clgCourse} onChange={handleChange} required>
+            <option value="">Select College Course</option>
+            {clgCourseOptions.map((course) => (
+              <option key={course} value={course}>
+                {course}
+              </option>
+            ))}
+          </select>
         </div>
-      ))}
 
-      <div>
-        <label htmlFor="clgCourse">Qualification</label>
-        <select name="clgCourse" value={formData.clgCourse} onChange={handleChange} required>
-          <option value="">Select College Course</option>
-          {clgCourseOptions.map((course) => (
-            <option key={course} value={course}>
-              {course}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div>
-        <label>Current Career Status</label>
-        <div className="radio-group">
-          {careerStatusOptions.map((status) => (
-            <label key={status}>
-              <input
-                type="radio"
-                name="careerStatus"
-                value={status}
-                checked={formData.careerStatus === status}
-                onChange={handleChange}
-                required
-              />
-              {status}
-            </label>
-          ))}
+        <div>
+          <label>Current Career Status</label>
+          <div className="radio-group">
+            {careerStatusOptions.map((status) => (
+              <label key={status}>
+                <input
+                  type="radio"
+                  name="careerStatus"
+                  value={status}
+                  checked={formData.careerStatus === status}
+                  onChange={handleChange}
+                  required
+                />
+                {status}
+              </label>
+            ))}
+          </div>
         </div>
       </div>
-      </div>
 
-      <button type="submit">Start Assesment</button>
+      <button type="submit">Start Assessment</button>
     </form>
-    </>
   );
 }
-
-   

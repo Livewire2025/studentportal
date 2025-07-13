@@ -10,7 +10,7 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background: #f0f4f8;
+  background: #ffffff;
   color: #111827;
   line-height: 1.6;
   min-height: 100vh;
@@ -29,18 +29,54 @@ body {
   color: #2c3e50;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
-.l3img{
+
+.l3img {
   margin-left: 280px;
   margin-top: -180px;
 }
-@media screen and (max-width:750px){
-  .l3img{
+
+@media screen and (max-width:750px) {
+  .l3img {
     margin-left: 80px;
   }
 }
-.l3{
+
+.radio-group{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-left: 55px;
+}
+
+.radio-group label{
+  display: flex;
+  justify-content: space-between;
+   color: #2c3e50;
+}
+
+.radio-group input[type="radio"]{
+  position: relative;
+  top: 30px;
+  left: -135px;
+}
+.option-form input[type="radio"]{
+  position: relative;
+  top: 3px;
+  right: 250px;
+}
+
+@media (max-width: 600px) {
+  .radio-group {
+   grid-template-columns: repeat(2, 1fr);
+    /* stack items on smaller screens */
+  }
+}
+
+
+.l3 {
   font-size: 15px;
 }
+
 h2 {
   font-weight: 600;
   text-align: center;
@@ -51,7 +87,8 @@ h2 {
 .register-form label,
 .radio-group label {
   font-weight: bold;
-  margin-bottom: 6px;
+  margin-top: -5px;
+  margin-bottom: 8px;
   display: block;
 }
 
@@ -69,23 +106,6 @@ input:focus,
 select:focus {
   border-color: #2563eb;
   outline: none;
-}
-
-.radio-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.radio-group label {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  color: #fff;
-}
-
-.radio-group input {
-  margin-right: 8px;
 }
 
 button {
@@ -113,7 +133,7 @@ button:hover {
 }
 
 .test-question {
-  font-size: 18px;
+  font-size: 45px;
   margin-bottom: 10px;
 }
 
@@ -121,13 +141,6 @@ button:hover {
   display: flex;
   flex-direction: column;
   gap: 16px;
-}
-
-.option-label {
-  background: #f5f5f5;
-  padding: 16px;
-  border-radius: 8px;
-  cursor: pointer;
 }
 
 .next-button {
@@ -200,7 +213,7 @@ strong {
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(99,102,241,0.3);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
 }
 
 .btn-primary:hover {
