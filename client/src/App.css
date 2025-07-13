@@ -41,34 +41,71 @@ body {
   }
 }
 
-.radio-group{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  margin-left: 55px;
-}
-
-.radio-group label{
+.radio-group {
   display: flex;
-  justify-content: space-between;
-   color: #2c3e50;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
 }
 
-.radio-group input[type="radio"]{
-  position: relative;
-  top: 30px;
-  left: -135px;
-}
-.option-form input[type="radio"]{
-  position: relative;
-  top: 3px;
-  right: 250px;
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* spacing between radio and label text */
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  margin-left: 10px;
 }
 
-@media (max-width: 600px) {
+.radio-option input[type="radio"] {
+  accent-color: #111827;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* For Test Page Options */
+.option-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.option-label input[type="radio"] {
+  accent-color: #f0222d;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+
+/* Responsive Handling */
+@media screen and (max-width: 600px) {
   .radio-group {
-   grid-template-columns: repeat(2, 1fr);
-    /* stack items on smaller screens */
+    grid-template-columns: 1fr 1fr;
+    margin: 10px auto;
+  }
+
+  .radio-group label,
+  .option-form label {
+    font-size: 14px;
+    flex-wrap: wrap;
+  }
+
+  .radio-group input[type="radio"],
+  .option-form input[type="radio"] {
+    transform: scale(1.1);
   }
 }
 
@@ -135,12 +172,6 @@ button:hover {
 .test-question {
   font-size: 45px;
   margin-bottom: 10px;
-}
-
-.option-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
 }
 
 .next-button {

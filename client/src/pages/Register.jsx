@@ -22,7 +22,7 @@ export default function Register() {
     e.preventDefault();
     try {
       await axios.post(
-        `${import.meta.env.VITE_BACKEND}/api/student/register` || "http://localhost:5000/api/student/register",
+        `${import.meta.env.VITE_BACKEND}/api/student/register`||"http://localhost:5000/api/student/register",
         formData
       );
       localStorage.setItem("email", formData.email);
@@ -43,9 +43,9 @@ export default function Register() {
 
   return (
     <form onSubmit={handleSubmit} className="register-form">
-       <img src="log1.png" alt="" width="90px" />
-         <h1 className="l3">Livewire Learner's License</h1>
-         <img className="l3img" src="Livewire Logo.png" alt=""  width="250px"/>
+      <img src="log1.png" alt="" width="90px" />
+      <h1 className="l3">Livewire Learner's License</h1>
+      <img className="l3img" src="Livewire Logo.png" alt="" width="250px" />
       <h2>Online Assessment Registration</h2>
       <p>Create your account to access exams and results</p>
 
@@ -77,23 +77,20 @@ export default function Register() {
           </select>
         </div>
 
-        <div>
-          <label>Current Career Status</label>
-          <div className="radio-group">
-            {careerStatusOptions.map((status) => (
-              <label key={status}>
-                <input
-                  type="radio"
-                  name="careerStatus"
-                  value={status}
-                  checked={formData.careerStatus === status}
-                  onChange={handleChange}
-                  required
-                />
-                {status}
-              </label>
-            ))}
-          </div>
+        <div className="radio-group">
+          {careerStatusOptions.map((status) => (
+            <label key={status} className="radio-option">
+              <input
+                type="radio"
+                name="careerStatus"
+                value={status}
+                checked={formData.careerStatus === status}
+                onChange={handleChange}
+                required
+              />
+              {status}
+            </label>
+          ))}
         </div>
       </div>
 
