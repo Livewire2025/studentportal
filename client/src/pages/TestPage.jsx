@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 // Utility: Shuffle function
 const shuffleArray = (array) => {
   return array
@@ -112,17 +113,16 @@ const rawQuestions = [
   }
 ];
 
-
 export default function TestPage() {
   const [questions, setQuestions] = useState([]);
   const [currentQ, setCurrentQ] = useState(0);
   const [score, setScore] = useState(0);
   const [time, setTime] = useState(60);
   const [selected, setSelected] = useState(null);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Shuffle questions and their options on first mount
     const shuffledQuestions = shuffleArray(rawQuestions).map((q) => ({
       ...q,
       options: shuffleArray(q.options),
@@ -139,7 +139,6 @@ export default function TestPage() {
       });
     }, 1000);
     return () => clearInterval(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentQ, questions]);
 
   const handleSelect = (event) => {
@@ -166,13 +165,15 @@ export default function TestPage() {
       const percentage = Math.round(((score + (selected === questions[currentQ].answer ? 1 : 0)) / questions.length) * 100);
 
       try {
-        await fetch(`${import.meta.env.VITE_BACKEND}/api/student/submit`||"http://localhost:5000/api/student/submit", {
+        setLoading(true);
+
+        await fetch(`${import.meta.env.VITE_BACKEND}/api/student/submit` || "http://localhost:5000/api/student/submit", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, score: percentage }),
         });
 
-        const certRes = await fetch(`${import.meta.env.VITE_BACKEND}/api/send-certificate`||"http://localhost:5000/api/send-certificate", {
+        const certRes = await fetch(`${import.meta.env.VITE_BACKEND}/api/send-certificate` || "http://localhost:5000/api/send-certificate", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, name, score: percentage }),
@@ -182,9 +183,13 @@ export default function TestPage() {
         if (!certRes.ok) throw new Error(certData.error || "Certificate not sent");
 
         localStorage.setItem("latestScore", percentage);
-        navigate("/success");
+
+        setTimeout(() => {
+          navigate("/success");
+        }, 1000);
       } catch (err) {
         alert("Submission error: " + err.message);
+        setLoading(false);
       }
     }
   };
@@ -192,18 +197,20 @@ export default function TestPage() {
   if (questions.length === 0) return <p>Loading questions...</p>;
 
   return (
-    <>
     <div className="test-container">
-     <img src="log1.png" alt="" width="90px" />
-         <h1 className="l3">Livewire Learner's License</h1>
-         <img className="l3img" src="Livewire Logo.png" alt=""  width="250px"/>
+      <img src="log1.png" alt="" width="90px" />
+      <h1 className="l3">Livewire Learner's License</h1>
+      <img className="l3img" src="Livewire Logo.png" alt="" width="250px" />
+
       <div className="test-header">
         <h3>
           Question {currentQ + 1} / {questions.length}
         </h3>
         <span className="timer">Time left: {time}s</span>
       </div>
+
       <h4 className="test-question">{questions[currentQ].question}</h4>
+
       <form className="option-form">
         {questions[currentQ].options.map((opt, index) => (
           <label key={index} className="option-label">
@@ -218,12 +225,16 @@ export default function TestPage() {
           </label>
         ))}
       </form>
+
       {selected && (
-        <button className="next-button" onClick={handleNext}>
-          {currentQ + 1 < questions.length ? "Next" : "Submit Test"}
+        <button
+          className="next-button"
+          onClick={handleNext}
+          disabled={loading}
+        >
+          {loading ? <span className="spinner"></span> : currentQ + 1 < questions.length ? "Next" : "Submit Test"}
         </button>
       )}
     </div>
-    </>
   );
 }
