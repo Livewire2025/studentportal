@@ -12,6 +12,7 @@ export default function Register() {
     careerStatus: ""
   });
 
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -20,16 +21,21 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       await axios.post(
-        `${import.meta.env.VITE_BACKEND}/api/student/register`||"http://localhost:5000/api/student/register",
+        import.meta.env.VITE_BACKEND
+          ? `${import.meta.env.VITE_BACKEND}/api/student/register`
+          : "http://localhost:5000/api/student/register",
         formData
       );
       localStorage.setItem("email", formData.email);
       localStorage.setItem("name", formData.name);
       navigate("/test");
     } catch (err) {
-      alert("Registration failed: " + err.response?.data?.message);
+      alert("Registration failed: " + (err.response?.data?.message || "Please try again."));
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -67,7 +73,12 @@ export default function Register() {
 
         <div>
           <label htmlFor="clgCourse">Qualification</label>
-          <select name="clgCourse" value={formData.clgCourse} onChange={handleChange} required>
+          <select
+            name="clgCourse"
+            value={formData.clgCourse}
+            onChange={handleChange}
+            required
+          >
             <option value="">Select College Course</option>
             {clgCourseOptions.map((course) => (
               <option key={course} value={course}>
@@ -94,7 +105,15 @@ export default function Register() {
         </div>
       </div>
 
-      <button type="submit">Start Assessment</button>
+      <button type="submit" disabled={loading}>
+        {loading ? (
+          <>
+            <span className="spinner" /> Submitting...
+          </>
+        ) : (
+          "Start Assessment"
+        )}
+      </button>
     </form>
   );
 }
