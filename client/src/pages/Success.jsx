@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+
 
 export default function Success() {
   const [score, setScore] = useState(null);
@@ -12,10 +12,27 @@ export default function Success() {
   }, []);
 
   return (
-    <div className="thank">
-      <h2 className="thankyou">🎉😊Congratulations!You have Completed the test 🎉😊</h2>
-      {score !== null && <p className="text">Your Score: <strong>{score}%</strong></p>}
-      <h2 className="thankyou">🎓Your Certification has been Sent to your mail-Id.🎓</h2>
-    </div>
+    <>
+      <div class="congrats-message">
+        <h1>Congratulations!</h1>
+        <p>You have successfully completed the test!</p>
+        {score !== null && <p className="text">Your Score: <strong>{score}%</strong></p>}
+      </div>
+
+      <div class="confetti">
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+      </div>
+
+      
+    </>
   );
 }

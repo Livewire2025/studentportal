@@ -208,28 +208,30 @@ button:hover {
 /* Success Page */
 .thank {
   width: 90%;
-  max-width: 850px;
+  max-width: 550px;
+  height: 450px;
   margin: 50px auto;
   text-align: center;
-  padding: 20px;
+  padding: 150px 0 0 0;
   border-radius: 10px;
-  background: linear-gradient(135deg, #21e3d0, #f0222d);
-  color: #fff;
 }
 
 .thank .text {
-  font-size: 24px;
+  font-size: 35px;
 }
 
 .thank .thankyou {
-  font-size: 20px;
+  font-size: 45px;
   font-weight: bold;
   margin-bottom: 10px;
 }
-
+.ty{
+  font-size: 22px;
+  font-weight: 600;
+}
 strong {
-  color: darkblue;
-  font-size: 28px;
+  color: rgb(59, 59, 56);
+  font-size: 35px;
 }
 
 /* Hero Section */
@@ -280,3 +282,98 @@ strong {
   border-radius: 24px;
   object-fit: cover;
 }
+
+
+.congrats-message {
+  z-index: 1;
+  text-align: center;
+}
+
+.congrats-message h1 {
+  color: #301ca5;
+  font-size: 3rem;
+  margin: 0;
+}
+
+.congrats-message p {
+  font-size: 2.5rem;
+  color: black;
+}
+
+.confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.confetti-piece {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  animation: fall 3s linear infinite;
+  opacity: 0.7;
+}
+
+.confetti-piece:nth-child(2) {
+  left: 20%;
+  background-color: blue;
+  animation-delay: 0.2s;
+}
+.confetti-piece:nth-child(3) {
+  left: 30%;
+  background-color: yellow;
+  animation-delay: 0.4s;
+}
+.confetti-piece:nth-child(4) {
+  left: 40%;
+  background-color: green;
+  animation-delay: 0.6s;
+}
+.confetti-piece:nth-child(5) {
+  left: 60%;
+  background-color: orange;
+  animation-delay: 0.1s;
+}
+.confetti-piece:nth-child(6) {
+  left: 70%;
+  background-color: purple;
+  animation-delay: 0.3s;
+}
+.confetti-piece:nth-child(7) {
+  left: 80%;
+  background-color: pink;
+  animation-delay: 0.5s;
+}
+.confetti-piece:nth-child(8) {
+  left: 90%;
+  background-color: cyan;
+  animation-delay: 0.7s;
+}
+.confetti-piece:nth-child(9) {
+  left: 25%;
+  background-color: lime;
+  animation-delay: 0.6s;
+}
+.confetti-piece:nth-child(10) {
+  left: 75%;
+  background-color: gold;
+  animation-delay: 0.2s;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
