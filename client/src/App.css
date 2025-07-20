@@ -77,7 +77,7 @@ body {
   background-color: #fff;
   display: flex;
   border-radius: 20px;
-  padding: 15px;
+  padding: 10px;
   align-items: center;
   gap: 10px;
   font-size: 20px;
@@ -174,8 +174,12 @@ button:hover {
   margin-bottom: 10px;
 }
 
+.test-header h3{
+  font-size: 16px;
+}
+
 .test-question {
-  font-size: 45px;
+  font-size: 30px;
   margin-bottom: 10px;
 }
 
