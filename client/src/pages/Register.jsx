@@ -33,13 +33,20 @@ export default function Register() {
       localStorage.setItem("name", formData.name);
       navigate("/test");
     } catch (err) {
-      alert("Registration failed: " + (err.response?.data?.message || "Please try again."));
-    } finally {
+      const errorMessage = err.response?.data?.message;
+
+      if (errorMessage?.includes("email") || errorMessage?.includes("phone")) {
+        alert("Email or phone number is already registered.");
+      } else {
+        alert("Registration failed: " + (errorMessage || "Please try again."));
+      }
+    }
+    finally {
       setLoading(false);
     }
   };
 
-  const clgCourseOptions = ["BSc", "BCA", "B.E", "B.Tech", "MSc", "MCA"];
+  const clgCourseOptions = ["BSc", "BCA", "B.E", "B.Tech", "MSc", "MCA","B.Com","B.Com(CS)","BBA","B.Com(CA)","B.A","M.Com","M.A"];
   const careerStatusOptions = [
     "Student",
     "Entrepreneur",
